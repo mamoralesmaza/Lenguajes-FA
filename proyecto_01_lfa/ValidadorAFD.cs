@@ -22,7 +22,7 @@ namespace SimuladorAFD
             // ==========================================
             // 1. VALIDACIÓN DE ESTADOS
             // ==========================================
-            // Verificar que el estado inicial pertenezca a Q (q0 ∈ Q)
+            // Verificar que el estado inicial pertenezca a Q (q0 ∈ Q) 
             if (string.IsNullOrEmpty(afd.EstadoInicial) || !afd.Estados.Contains(afd.EstadoInicial))
             {
                 errores.Add($"[Error de Estado] El estado inicial '{afd.EstadoInicial}' no pertenece al conjunto de estados Q.");
