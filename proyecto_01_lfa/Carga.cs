@@ -5,11 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace SimuladorAFD
 {
-    /// <summary>
     /// Clase encargada de la extracción, parseo y construcción del AFD
     /// tanto desde un archivo de texto .txt como de forma interactiva.
-    /// </summary>
-    public class AFD
+    public class Carga
     {
         /// <summary>
         /// Lee un archivo .txt y extrae los componentes de la quintúpla usando Expresiones Regulares.
@@ -33,7 +31,7 @@ namespace SimuladorAFD
             Regex regexA = new Regex(@"^A\s*=\s*\{\s*(.*?)\s*\}$");
             Regex regexS = new Regex(@"^S\s*=\s*(\w+)$");
             Regex regexF = new Regex(@"^F\s*=\s*\{\s*(.*?)\s*\}$");
-            Regex regexTransicion = new Regex(@"^\(\s*(\w+)\s*,\s*(.)\s*\)\s*->\s*(\w+)$");
+            Regex regexTransicion = new Regex(@"^\(\s*(\w+)\s*,\s*(.)\s*\)\s*->\s*(\w+),?$");
 
             for (int i = 0; i < lineas.Length; i++)
             {
