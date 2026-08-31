@@ -1,12 +1,9 @@
 namespace SimuladorAFD
 {
-    /// <summary>
     /// Funcionalidad 3: Generación y Despliegue de la Tabla de Transición.
     /// Se encarga únicamente del despliegue visual formal y matricial del AFD.
-    /// </summary>
     public class TablaTransicion
     {
-        /// Funcionalidad 3: Generación y despliegue de la Tabla de Transición
         /// Imprime en consola la quintúpla formal y genera la matriz visual de transiciones.
         /// </summary>
         /// <param name="afd">Autómata del cual se desplegarán los datos</param>

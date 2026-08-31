@@ -5,18 +5,11 @@ using System.IO;
 namespace SimuladorAFD
 {
     /// Funcionalidad 4: Motor de evaluación y simulación paso a paso
-    /// <summary>
     /// Motor encargado de la ejecución paso a paso de cadenas, procesamiento por lotes
-    /// y despliegue visual de la quintaúpla y la tabla de transición.
-    /// </summary>
+    /// y despliegue visual de la túpla y la tabla de transición.
     public class SimuladorAFD
     {
-        /// <summary>
         /// Procesa una cadena de entrada paso a paso mostrando la traza completa de ejecución.
-        /// </summary>
-        /// <param name="afd">Autómata predeterminado a evaluar</param>
-        /// <param name="cadena">Cadena a procesar</param>
-        /// <returns>True si la cadena es aceptada, False de lo contrario</returns>
         public static bool EvaluarCadena(AutomataFinito afd, string cadena)
         {
             Console.WriteLine($"\n==========================================");
@@ -33,21 +26,21 @@ namespace SimuladorAFD
                 // Verificar si el símbolo pertenece al alfabeto
                 if (!afd.Alfabeto.Contains(simbolo))
                 {
-                    Console.WriteLine($" ERROR: El símbolo '{simbolo}' no pertenece al alfabeto Σ.");
-                    Console.WriteLine("Veredicto: RECHAZADA (Símbolo no reconocido)");
+                    Console.WriteLine($"\n ERROR: El símbolo '{simbolo}' no pertenece al alfabeto Σ.");
+                    Console.WriteLine("\nFALLO! (Símbolo no reconocido)");
                     return false;
                 }
 
                 // Obtener el siguiente estado a través de la función de transición
                 if (afd.Transiciones.TryGetValue((estadoActual, simbolo), out string estadoSiguiente))
                 {
-                    Console.WriteLine($" Paso {i + 1}: Estado actual [{estadoActual}] --('{simbolo}')--> Siguiente estado [{estadoSiguiente}]");
+                    Console.WriteLine($"\n Paso {i + 1}: Estado actual [{estadoActual}] --('{simbolo}')--> Siguiente estado [{estadoSiguiente}]");
                     estadoActual = estadoSiguiente;
                 }
                 else
                 {
-                    Console.WriteLine($" Paso {i + 1}: Sin transición para ({estadoActual}, '{simbolo}')");
-                    Console.WriteLine("Veredicto: RECHAZADA (Transición indefinida)");
+                    Console.WriteLine($"\n Paso {i + 1}: Sin transición para ({estadoActual}, '{simbolo}')");
+                    Console.WriteLine("\nVeredicto: RECHAZADA (Transición indefinida)");
                     return false;
                 }
             }
@@ -56,25 +49,23 @@ namespace SimuladorAFD
             bool esAceptada = afd.EstadosFinales.Contains(estadoActual);
             Console.WriteLine($"------------------------------------------");
             Console.WriteLine($"Estado final alcanzado: {estadoActual}");
-            Console.WriteLine($"Veredicto Final: {(esAceptada ? "ACEPTADA (Pertenece al Lenguaje)" : "RECHAZADA (Estado no final)")}");
+            Console.WriteLine($"Validacion: {(esAceptada ? "ACEPTADA (Pertenece al Lenguaje)" : "RECHAZADA (Estado final no congruente)")}");
             Console.WriteLine($"==========================================\n");
 
             return esAceptada;
         }
 
-        /// <summary>
         /// Evalúa un conjunto de cadenas contenidas en un archivo .txt, una por línea.
-        /// </summary>
-        public static void EvaluarLote(AutomataFinito afd, string rutaArchivoLote)
+        public static void ValidacionArchivo(AutomataFinito afd, string rutaArchivo)
         {
-            if (!File.Exists(rutaArchivoLote))
+            if (!File.Exists(rutaArchivo))
             {
-                Console.WriteLine($" El archivo de lote '{rutaArchivoLote}' no existe.");
+                Console.WriteLine($" El archivo '{rutaArchivo}' no existe.");
                 return;
             }
 
-            string[] cadenas = File.ReadAllLines(rutaArchivoLote);
-            Console.WriteLine($"\n--- PROCESANDO LOTE DE {cadenas.Length} CADENAS ---");
+            string[] cadenas = File.ReadAllLines(rutaArchivo);
+            Console.WriteLine($"\n--- PROCESANDO CADENAS ({cadenas.Length}) ---");
 
             foreach (var cadena in cadenas)
             {
@@ -82,9 +73,7 @@ namespace SimuladorAFD
             }
         }
 
-        /// <summary>
         /// Imprime en consola la definición formal del AFD y su correspondiente Tabla de Transición.
-        /// </summary>
         public static void MostrarTablaTransicion(AutomataFinito afd)
         {
             Console.WriteLine("\n==========================================");

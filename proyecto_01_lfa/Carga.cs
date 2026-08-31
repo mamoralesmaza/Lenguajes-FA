@@ -96,16 +96,14 @@ namespace SimuladorAFD
                 }
                 else
                 {
-                    throw new FormatException($"Error de sintaxis en el archivo (línea {i + 1}): '{linea}'");
+                    throw new FormatException($"\nError de sintaxis en el archivo (línea {i + 1}): '{linea}'");
                 }
             }
 
             return afd;
         }
 
-        /// <summary>
-        /// Solicita al usuario los elementos de la quintúpla paso a paso mediante la consola.
-        /// </summary>
+        /// Solicita al usuario los elementos de la túpla paso a paso mediante la consola.
         public static AutomataFinito CargarInteractivamente()
         {
             AutomataFinito afd = new AutomataFinito();
@@ -113,12 +111,12 @@ namespace SimuladorAFD
             Console.WriteLine("\n--- INGRESO INTERACTIVO DEL AFD ---");
 
             // 1. Estados Q
-            Console.Write("Ingrese los estados separados por coma (ej. q0, q1, q2): ");
+            Console.WriteLine("\nIngrese los estados separados por coma (ej. q0, q1, q2): ");
             string[] estados = Console.ReadLine().Split(',');
             foreach (var e in estados) afd.Estados.Add(e.Trim());
 
             // 2. Alfabeto A (Σ)
-            Console.Write("Ingrese el alfabeto separado por coma (ej. 0, 1): ");
+            Console.WriteLine("\nIngrese el alfabeto separado por coma (ej. 0, 1): ");
             string[] simbolos = Console.ReadLine().Split(',');
             foreach (var s in simbolos)
             {
@@ -127,21 +125,21 @@ namespace SimuladorAFD
             }
 
             // 3. Estado Inicial S
-            Console.Write("Ingrese el estado inicial (ej. q0): ");
+            Console.WriteLine("\nIngrese el estado inicial (ej. q0): ");
             afd.EstadoInicial = Console.ReadLine().Trim();
 
             // 4. Estados Finales F
-            Console.Write("Ingrese los estados finales separados por coma (ej. q2): ");
+            Console.WriteLine("\nIngrese los estados finales separados por coma (ej. q2): ");
             string[] finales = Console.ReadLine().Split(',');
             foreach (var f in finales) afd.EstadosFinales.Add(f.Trim());
 
             // 5. Transiciones T
             Console.WriteLine("\nIngreso de transiciones (escribe 'fin' para terminar):");
-            Console.WriteLine("Formato esperado: estadoOrigen, simbolo, estadoDestino (ej: q0, 0, q0)");
+            Console.WriteLine("\nFormato esperado: estadoOrigen, simbolo, estadoDestino (ej. q0, 0, q0)");
 
             while (true)
             {
-                Console.Write("Transición > ");
+                Console.WriteLine("\nTransición > ");
                 string entrada = Console.ReadLine().Trim();
                 if (entrada.ToLower() == "fin") break;
 
