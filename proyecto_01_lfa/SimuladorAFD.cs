@@ -4,6 +4,7 @@ using System.IO;
 
 namespace SimuladorAFD
 {
+    /// Funcionalidad 4: Motor de evaluación y simulación paso a paso
     /// <summary>
     /// Motor encargado de la ejecución paso a paso de cadenas, procesamiento por lotes
     /// y despliegue visual de la quintaúpla y la tabla de transición.

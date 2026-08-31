@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj": {}
+    "C:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj": {}
   },
   "projects": {
-    "c:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj": {
+    "C:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj",
+        "projectUniqueName": "C:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj",
         "projectName": "proyecto_01_lfa",
-        "projectPath": "c:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj",
+        "projectPath": "C:\\lenguajes_fa\\proyecto_01_lfa\\proyecto_01_lfa.csproj",
         "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-        "outputPath": "c:\\lenguajes_fa\\proyecto_01_lfa\\obj\\",
+        "outputPath": "C:\\lenguajes_fa\\proyecto_01_lfa\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,7 +6,7 @@ namespace SimuladorAFD
     /// </summary>
     public class TablaTransicion
     {
-        /// <summary>
+        /// Funcionalidad 3: Generación y despliegue de la Tabla de Transición
         /// Imprime en consola la quintúpla formal y genera la matriz visual de transiciones.
         /// </summary>
         /// <param name="afd">Autómata del cual se desplegarán los datos</param>

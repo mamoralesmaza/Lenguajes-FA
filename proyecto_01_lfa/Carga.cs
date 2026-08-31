@@ -5,20 +5,17 @@ using System.Text.RegularExpressions;
 
 namespace SimuladorAFD
 {
+    /// Funcionalidad 1: Carga
     /// Clase encargada de la extracción, parseo y construcción del AFD
     /// tanto desde un archivo de texto .txt como de forma interactiva.
     public class Carga
     {
-        /// <summary>
-        /// Lee un archivo .txt y extrae los componentes de la quintúpla usando Expresiones Regulares.
-        /// </summary>
-        /// <param name="rutaArchivo">Ruta relativa o absoluta del archivo .txt</param>
-        /// <returns>Instancia de AutomataFinitoDeterminista con la información cargada</returns>
+        /// Lee un archivo .txt y extrae los componentes de la túpla usando Expresiones Regulares.
         public static AutomataFinito CargarDesdeArchivo(string rutaArchivo)
         {
             if (!File.Exists(rutaArchivo))
             {
-                throw new FileNotFoundException($"El archivo en la ruta '{rutaArchivo}' no existe.");
+                throw new FileNotFoundException($"\nEl archivo en la ruta '{rutaArchivo}' no existe.");
             }
 
             AutomataFinito afd = new AutomataFinito();

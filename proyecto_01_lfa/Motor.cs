@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace SimuladorAFD
 {
-    /// <summary>
+    /// Funcionalidad 2: Motor de Validación de la Quintúpla
     /// Funcionalidad 2: Motor de Validación de la Quintúpla.
     /// Valida la integridad estructural e invariantes teóricas del AFD antes de procesar cadenas.
-    /// </summary>
     public class Motor
     {
         /// <summary>
