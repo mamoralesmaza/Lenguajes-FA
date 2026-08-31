@@ -39,8 +39,8 @@ namespace SimuladorAFD
                 }
                 else
                 {
-                    Console.WriteLine($"\n Paso {i + 1}: Sin transición para ({estadoActual}, '{simbolo}')");
-                    Console.WriteLine("\nVeredicto: RECHAZADA (Transición indefinida)");
+                    Console.WriteLine($"\nPaso {i + 1}: Sin transición para ({estadoActual}, '{simbolo}')");
+                    Console.WriteLine("\nValidacion: RECHAZADA (Transición indefinida)");
                     return false;
                 }
             }
