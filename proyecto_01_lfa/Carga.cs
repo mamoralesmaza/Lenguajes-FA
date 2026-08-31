@@ -57,7 +57,7 @@ namespace SimuladorAFD
                     }
                     else
                     {
-                        throw new FormatException($"Error de sintaxis en la línea {i + 1} (Transición inválida): '{linea}'");
+                        throw new FormatException($"\nError de sintaxis en la línea {i + 1} (Transición inválida): '{linea}'");
                     }
                     continue;
                 }
@@ -154,7 +154,7 @@ namespace SimuladorAFD
                 }
                 else
                 {
-                    Console.WriteLine(" Formato incorrecto. Intente de nuevo.");
+                    Console.WriteLine("\nFormato incorrecto. Intente de nuevo.");
                 }
             }
 

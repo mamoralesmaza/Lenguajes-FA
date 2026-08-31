@@ -13,7 +13,7 @@ namespace SimuladorAFD
         public static bool EvaluarCadena(AutomataFinito afd, string cadena)
         {
             Console.WriteLine($"\n==========================================");
-            Console.WriteLine($" TRAZA DE EJECUCIÓN PARA CADENA: \"{cadena}\"");
+            Console.WriteLine($"     VALIDACION PARA CADENA: \"{cadena}\"");
             Console.WriteLine($"==========================================");
 
             string estadoActual = afd.EstadoInicial;
@@ -26,7 +26,7 @@ namespace SimuladorAFD
                 // Verificar si el símbolo pertenece al alfabeto
                 if (!afd.Alfabeto.Contains(simbolo))
                 {
-                    Console.WriteLine($"\n ERROR: El símbolo '{simbolo}' no pertenece al alfabeto Σ.");
+                    Console.WriteLine($"\nERROR: El símbolo '{simbolo}' no pertenece al alfabeto Σ.");
                     Console.WriteLine("\nFALLO! (Símbolo no reconocido)");
                     return false;
                 }
@@ -34,7 +34,7 @@ namespace SimuladorAFD
                 // Obtener el siguiente estado a través de la función de transición
                 if (afd.Transiciones.TryGetValue((estadoActual, simbolo), out string estadoSiguiente))
                 {
-                    Console.WriteLine($"\n Paso {i + 1}: Estado actual [{estadoActual}] --('{simbolo}')--> Siguiente estado [{estadoSiguiente}]");
+                    Console.WriteLine($"\nPaso {i + 1}: Estado actual [{estadoActual}] --('{simbolo}')--> Siguiente estado [{estadoSiguiente}]");
                     estadoActual = estadoSiguiente;
                 }
                 else
@@ -60,7 +60,7 @@ namespace SimuladorAFD
         {
             if (!File.Exists(rutaArchivo))
             {
-                Console.WriteLine($" El archivo '{rutaArchivo}' no existe.");
+                Console.WriteLine($"El archivo '{rutaArchivo}' no existe.");
                 return;
             }
 

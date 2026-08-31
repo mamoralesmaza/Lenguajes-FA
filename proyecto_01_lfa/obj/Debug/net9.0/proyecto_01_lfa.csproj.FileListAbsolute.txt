@@ -1,0 +1,15 @@
+C:\lenguajes_fa\proyecto_01_lfa\bin\Debug\net9.0\proyecto_01_lfa.exe
+C:\lenguajes_fa\proyecto_01_lfa\bin\Debug\net9.0\proyecto_01_lfa.deps.json
+C:\lenguajes_fa\proyecto_01_lfa\bin\Debug\net9.0\proyecto_01_lfa.runtimeconfig.json
+C:\lenguajes_fa\proyecto_01_lfa\bin\Debug\net9.0\proyecto_01_lfa.dll
+C:\lenguajes_fa\proyecto_01_lfa\bin\Debug\net9.0\proyecto_01_lfa.pdb
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.GeneratedMSBuildEditorConfig.editorconfig
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.AssemblyInfoInputs.cache
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.AssemblyInfo.cs
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.csproj.CoreCompileInputs.cache
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.sourcelink.json
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.dll
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\refint\proyecto_01_lfa.dll
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.pdb
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\proyecto_01_lfa.genruntimeconfig.cache
+C:\lenguajes_fa\proyecto_01_lfa\obj\Debug\net9.0\ref\proyecto_01_lfa.dll
