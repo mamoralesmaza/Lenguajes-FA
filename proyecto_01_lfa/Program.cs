@@ -16,7 +16,7 @@ namespace SimuladorAFD
                 Console.WriteLine("    SIMULADOR DE AUTÓMATAS FINITOS (AFD)     ");
                 Console.WriteLine("==============================================");
                 Console.WriteLine("1. Cargar túpla desde archivo (.txt)"); /// Funcionalidad 1
-                Console.WriteLine("2. Ingresar quintúpla manualmente");    /// Funcionalidad 1
+                Console.WriteLine("2. Ingresar túpla manualmente");    /// Funcionalidad 1
                 Console.WriteLine("3. Mostrar Tabla de Transición");       /// Funcionalidad 3
                 Console.WriteLine("4. Evaluar una cadena individual");     /// Funcionalidad 4
                 Console.WriteLine("5. Evaluar las cadenas (.txt)");        /// Funcionalidad 4
