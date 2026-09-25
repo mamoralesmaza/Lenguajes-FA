@@ -33,7 +33,6 @@ namespace SimuladorAFD
 
         /// Agrega una transición al AFND. Si el par (origen, simbolo) ya existe, 
         /// añade el nuevo destino al conjunto de estados de llegada.
-        /// </summary>
         /// <param name="origen">Estado de partida</param>
         /// <param name="simbolo">Símbolo del alfabeto leído</param>
         /// <param name="destino">Nuevo estado alcanzable</param>
