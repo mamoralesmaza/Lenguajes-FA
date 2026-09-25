@@ -21,9 +21,9 @@ namespace SimuladorAFD
 
             while (!salir)
             {
-                Console.WriteLine("\n==============================================");
+                Console.WriteLine("\n======================================================");
                 Console.WriteLine("     SIMULADOR DE AUTÓMATAS FINITOS (AFD / AFND) ");
-                Console.WriteLine("==============================================");
+                Console.WriteLine("======================================================");
                 Console.WriteLine("--- FASE 1: AUTÓMATA FINITO DETERMINISTA (AFD) ---");
                 Console.WriteLine("1. Cargar AFD desde archivo (.txt)");
                 Console.WriteLine("2. Ingresar AFD manualmente");
