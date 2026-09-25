@@ -1,0 +1,2 @@
+C:\lenguajes_fa\proyecto_01_lfa\bin\Release\net9.0\win-x64\publish\proyecto_01_lfa.pdb
+C:\lenguajes_fa\proyecto_01_lfa\bin\Release\net9.0\win-x64\publish\proyecto_01_lfa.exe
