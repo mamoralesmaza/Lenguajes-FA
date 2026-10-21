@@ -1,0 +1,8 @@
+c
+aca
+bcb
+abcba
+aabcbaa
+acb
+abcca
+abcab

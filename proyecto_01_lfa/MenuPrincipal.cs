@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 
 /// Martín Andrés Morales Mazariegos 1217025
- ///Diego Alejandro Gualim Ramírez  1250025  
-
+/// Diego Alejandro Gualim Ramírez  1250025  
 
 namespace SimuladorAFD
 {
@@ -17,28 +16,39 @@ namespace SimuladorAFD
             // Guarda el AFND activo cuando se utiliza la Fase 2
             AFND afndActual = null;
 
+            // Guarda el APD activo cuando se utiliza la Fase 3
+            APD apdActual = null;
+
             bool salir = false;
 
             while (!salir)
             {
-                Console.WriteLine("\n======================================================");
-                Console.WriteLine("     SIMULADOR DE AUTÓMATAS FINITOS (AFD / AFND) ");
-                Console.WriteLine("======================================================");
+                Console.WriteLine("\n===============================================================");
+                Console.WriteLine("    SIMULADOR DE AUTÓMATAS FINITOS Y PILA (AFD / AFND / APD) ");
+                Console.WriteLine("===============================================================");
                 Console.WriteLine("--- FASE 1: AUTÓMATA FINITO DETERMINISTA (AFD) ---");
                 Console.WriteLine("1. Cargar AFD desde archivo (.txt)");
                 Console.WriteLine("2. Ingresar AFD manualmente");
                 Console.WriteLine("\n--- FASE 2: AUTÓMATA FINITO NO DETERMINISTA (AFND) ---");
                 Console.WriteLine("3. Cargar AFND desde archivo (.txt) y transformar a AFD");
                 Console.WriteLine("4. Ingresar AFND manualmente y transformar a AFD");
+                Console.WriteLine("\n--- FASE 3: AUTÓMATA DE PILA DETERMINISTA (APD) ---");
+                Console.WriteLine("5. Cargar APD desde archivo (.txt)");
+                Console.WriteLine("6. Ingresar APD manualmente");
+                Console.WriteLine("\n--- OPERACIONES SOBRE EL APD ACTIVO EN MEMORIA ---");
+                Console.WriteLine("7. Mostrar Tabla de Transición del APD");
+                Console.WriteLine("8. Evaluar una cadena en el APD");
+                Console.WriteLine("9. Evaluar lote de cadenas en el APD (.txt)");
                 Console.WriteLine("\n--- OPERACIONES SOBRE EL AFD ACTIVO EN MEMORIA ---");
-                Console.WriteLine("5. Mostrar Tabla de Transición del AFD");
-                Console.WriteLine("6. Evaluar una cadena individual");
-                Console.WriteLine("7. Evaluar lote de cadenas (.txt)");
-                Console.WriteLine("8. Reiniciar / Limpiar autómatas en memoria");
-                Console.WriteLine("9. Salir");
+                Console.WriteLine("10. Mostrar Tabla de Transición del AFD");
+                Console.WriteLine("11. Evaluar una cadena individual en el AFD");
+                Console.WriteLine("12. Evaluar lote de cadenas en el AFD (.txt)");
+                Console.WriteLine("\n--- GENERAL ---");
+                Console.WriteLine("13. Reiniciar / Limpiar autómatas en memoria");
+                Console.WriteLine("14. Salir");
                 Console.Write("\nSeleccione una opción: ");
 
-                string opcion = Console.ReadLine() ?? "";
+                string opcion = (Console.ReadLine() ?? "").Trim();
 
                 switch (opcion)
                 {
@@ -101,14 +111,11 @@ namespace SimuladorAFD
                         string rutaAFND = (Console.ReadLine() ?? "").Trim();
                         try
                         {
-                            // 1. Cargar AFND desde archivo
                             AFND afndTemp = CargaAFND.CargarDesdeArchivo(rutaAFND);
                             afndActual = afndTemp;
 
-                            // 2. Mostrar la Tabla de Transición del AFND original (Funcionalidad 1)
                             TablaTransicionAFND.MostrarTabla(afndActual);
 
-                            // 3. Transformación automática de AFND a AFD (Funcionalidad 2)
                             Console.WriteLine("\nProcesando Algoritmo de Construcción de Subconjuntos...");
                             afdActual = TransformadorSubconjuntos.ConvertirAFNDaAFD(afndActual);
 
@@ -123,14 +130,11 @@ namespace SimuladorAFD
                     case "4":
                         try
                         {
-                            // 1. Cargar AFND interactivamente por consola
                             AFND afndManual = CargaAFND.CargarInteractivamente();
                             afndActual = afndManual;
 
-                            // 2. Mostrar la Tabla de Transición del AFND original (Funcionalidad 1)
                             TablaTransicionAFND.MostrarTabla(afndActual);
 
-                            // 3. Transformación automática de AFND a AFD (Funcionalidad 2)
                             Console.WriteLine("\nProcesando Algoritmo de Construcción de Subconjuntos...");
                             afdActual = TransformadorSubconjuntos.ConvertirAFNDaAFD(afndActual);
 
@@ -143,57 +147,116 @@ namespace SimuladorAFD
                         break;
 
                     // -------------------------------------------------------------
-                    // FASE 1 & FASE 2: Operaciones sobre el AFD Activo
+                    // FASE 3: Autómata de Pila Determinista (APD)
                     // -------------------------------------------------------------
                     case "5":
-                        if (AsegurarAFD(afdActual))
+                        Console.WriteLine("\nIngrese la ruta del archivo del APD (.txt): ");
+                        string rutaAPD = (Console.ReadLine() ?? "").Trim();
+                        try
                         {
-                            // Muestra la matriz del AFD resultante (o cargado)
-                            TablaTransicion.MostrarTablaTransicion(afdActual);
+                            APD apdTemp = CargaAPD.CargarDesdeArchivo(rutaAPD);
+                            if (apdTemp != null)
+                            {
+                                apdActual = apdTemp;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"\nError al cargar el APD: {ex.Message}");
                         }
                         break;
 
                     case "6":
-                        if (AsegurarAFD(afdActual))
+                        try
                         {
-                            Console.WriteLine("\nIngrese la cadena a evaluar (o presione Enter para cadena vacía λ):");
-                            string cadena = Console.ReadLine() ?? "";
-
-                            // Evalúa la cadena paso a paso sobre el AFD
-                            SimuladorAFD.EvaluarCadena(afdActual, cadena);
+                            APD apdManual = CargaAPD.CargarInteractively();
+                            if (apdManual != null)
+                            {
+                                apdActual = apdManual;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"\nError durante la entrada manual del APD: {ex.Message}");
                         }
                         break;
 
                     case "7":
-                        if (AsegurarAFD(afdActual))
+                        if (AsegurarAPD(apdActual))
                         {
-                            Console.WriteLine("\nIngrese la ruta del archivo de cadenas (.txt):");
-                            string rutaCadenas = (Console.ReadLine() ?? "").Trim();
-
-                            // Evalúa un conjunto de cadenas desde un archivo plano
-                            SimuladorAFD.ValidacionArchivo(afdActual, rutaCadenas);
+                            SimuladorAPD.MostrarTablaTransicion(apdActual);
                         }
                         break;
 
                     case "8":
-                        afdActual = null;
-                        afndActual = null;
-                        Console.WriteLine("\n[INFO] Memoria del programa limpiada. No hay autómatas cargados.");
+                        if (AsegurarAPD(apdActual))
+                        {
+                            Console.WriteLine("\nIngrese la cadena a evaluar en el APD:");
+                            string cadenaAPD = Console.ReadLine() ?? "";
+                            SimuladorAPD.EvaluarCadena(apdActual, cadenaAPD);
+                        }
                         break;
 
                     case "9":
+                        if (AsegurarAPD(apdActual))
+                        {
+                            Console.WriteLine("\nIngrese la ruta del archivo de cadenas para APD (.txt):");
+                            string rutaLoteAPD = (Console.ReadLine() ?? "").Trim();
+                            SimuladorAPD.ValidacionArchivo(apdActual, rutaLoteAPD);
+                        }
+                        break;
+
+                    // -------------------------------------------------------------
+                    // Operaciones sobre el AFD Activo
+                    // -------------------------------------------------------------
+                    case "10":
+                        if (AsegurarAFD(afdActual))
+                        {
+                            TablaTransicion.MostrarTablaTransicion(afdActual);
+                        }
+                        break;
+
+                    case "11":
+                        if (AsegurarAFD(afdActual))
+                        {
+                            Console.WriteLine("\nIngrese la cadena a evaluar (o presione Enter para cadena vacía λ):");
+                            string cadena = Console.ReadLine() ?? "";
+                            SimuladorAFD.EvaluarCadena(afdActual, cadena);
+                        }
+                        break;
+
+                    case "12":
+                        if (AsegurarAFD(afdActual))
+                        {
+                            Console.WriteLine("\nIngrese la ruta del archivo de cadenas (.txt):");
+                            string rutaCadenas = (Console.ReadLine() ?? "").Trim();
+                            SimuladorAFD.ValidacionArchivo(afdActual, rutaCadenas);
+                        }
+                        break;
+
+                    // -------------------------------------------------------------
+                    // Limpieza y Salida
+                    // -------------------------------------------------------------
+                    case "13":
+                        afdActual = null;
+                        afndActual = null;
+                        apdActual = null;
+                        Console.WriteLine("\n[INFO] Memoria del programa limpiada. No hay autómatas cargados.");
+                        break;
+
+                    case "14":
                         salir = true;
                         Console.WriteLine("\n¡Gracias por utilizar el simulador de autómatas!");
                         break;
 
                     default:
-                        Console.WriteLine("\n[OPCIÓN INVÁLIDA] Seleccione una opción del 1 al 9.");
+                        Console.WriteLine("\n[OPCIÓN INVÁLIDA] Seleccione una opción del 1 al 14.");
                         break;
                 }
             }
         }
 
-        /// Verifica que exista un AFD válido guardado en memoria antes de permitir la simulación o despliegue.
+        /// Verifica que exista un AFD válido guardado en memoria.
         private static bool AsegurarAFD(AutomataFinito afd)
         {
             if (afd == null)
@@ -203,5 +266,17 @@ namespace SimuladorAFD
             }
             return true;
         }
+
+        /// Verifica que exista un APD válido guardado en memoria.
+        private static bool AsegurarAPD(APD apd)
+        {
+            if (apd == null)
+            {
+                Console.WriteLine("\n[¡ADVERTENCIA!] Debes cargar un APD (Opciones 5 o 6) primero.");
+                return false;
+            }
+            return true;
+        }
+
     }
 }
