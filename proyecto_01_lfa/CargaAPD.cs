@@ -112,7 +112,7 @@ namespace SimuladorAFD
         }
 
         /// Permite el ingreso interactivo de la tupla de un APD mediante la consola.
-        public static APD CargarInteractively()
+        public static APD? CargarInteractively()
         {
             APD apd = new APD();
             Console.WriteLine("\n--- INGRESO INTERACTIVO DE APD ---");
@@ -171,7 +171,9 @@ namespace SimuladorAFD
             var (esValido, mensajeError) = apd.ValidarDeterminismo();
             if (!esValido)
             {
-                Console.WriteLine($"\n [ADVERTENCIA] {mensajeError}");
+                Console.WriteLine($"\n [RECHAZADO] {mensajeError}");
+                Console.WriteLine("El APD ingresado no se activó. Corrija las transiciones en un nuevo ingreso.");
+                return null;
             }
 
             return apd;

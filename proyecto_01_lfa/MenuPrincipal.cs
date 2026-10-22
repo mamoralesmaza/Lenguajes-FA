@@ -169,10 +169,15 @@ namespace SimuladorAFD
                     case "6":
                         try
                         {
-                            APD apdManual = CargaAPD.CargarInteractively();
+                            APD? apdManual = CargaAPD.CargarInteractively();
                             if (apdManual != null)
                             {
                                 apdActual = apdManual;
+                                Console.WriteLine("\nAPD ingresado manualmente y validado con éxito.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\n[INFO] El APD activo no fue reemplazado.");
                             }
                         }
                         catch (Exception ex)

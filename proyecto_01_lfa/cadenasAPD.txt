@@ -1,8 +1,8 @@
-c
-aca
-bcb
-abcba
-aabcbaa
-acb
-abcca
-abcab
+ab
+aabb
+aaabbb
+a
+b
+abb
+aab
+ba
